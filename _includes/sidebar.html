@@ -1,19 +1,68 @@
-{% if page.author_profile or layout.author_profile or page.sidebar %}
-  <div class="sidebar sticky">
-  {% if page.author_profile or layout.author_profile %}{% include author-profile.html %}{% endif %}
-  {% if page.sidebar %}
-    {% for s in page.sidebar %}
-      {% if s.image %}
-        <img src="{{ s.image | relative_url }}"
-             alt="{% if s.image_alt %}{{ s.image_alt }}{% endif %}">
-      {% endif %}
-      {% if s.title %}<h3>{{ s.title }}</h3>{% endif %}
-      {% if s.text %}{{ s.text | markdownify }}{% endif %}
-      {% if s.nav %}{% include nav_list nav=s.nav %}{% endif %}
-    {% endfor %}
-    {% if page.sidebar.nav %}
-      {% include nav_list nav=page.sidebar.nav %}
-    {% endif %}
+
+<!-- ✨ 수정된 전체 구조 (버튼을 사이드바 내부로 이동) -->
+<div class="sidebar sticky" id="sidebar">
+  
+
+  {% if page.author_profile or layout.author_profile %}
+    {% include author-profile.html %}
   {% endif %}
-  </div>
-{% endif %}
+
+  <div class="sidebar__title">Category</div>
+  {% assign sorted_categories = site.categories | sort %}
+  {% for category in sorted_categories %}
+    {% assign category_name = category[0] %}
+    <div class="sidebar__category">
+      <input type="checkbox" id="cat-{{ forloop.index }}" class="toggle-input">
+      <label for="cat-{{ forloop.index }}" class="toggle-label">{{ category_name }}</label>
+      <ul class="tag-list">
+        {% assign posts = category[1] %}
+        {% assign tags_in_category = "" | split: "" %}
+        {% for post in posts %}
+          {% for tag in post.tags %}
+            {% unless tags_in_category contains tag %}
+              {% assign tags_in_category = tags_in_category | push: tag %}
+            {% endunless %}
+          {% endfor %}
+        {% endfor %}
+        {% assign tags_in_category = tags_in_category | sort %}
+        {% for tag in tags_in_category %}
+          {% assign tag_count = 0 %}
+          {% for post in posts %}
+            {% if post.tags contains tag %}
+              {% assign tag_count = tag_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          <li>
+            <a href="/tags/#{{ tag | slugify }}">{{ tag }}</a>
+            <span class="taxonomy__count">({{ tag_count }})</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
+<button id="sidebar-toggle" class="sidebar__toggle-btn">
+  <i class="fas fa-angle-left"></i>
+</button>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("sidebar-toggle");
+    const icon = btn.querySelector("i");
+    const sidebar = document.getElementById("sidebar");
+    const content = document.querySelector(".initial-content");
+
+    btn.addEventListener("click", function () {
+      sidebar.classList.toggle("hide-sidebar");
+      content.classList.toggle("full-width-content");
+
+      // 아이콘 방향 토글
+      if (sidebar.classList.contains("hide-sidebar")) {
+        icon.classList.remove("fa-angle-left");
+        icon.classList.add("fa-angle-right");
+      } else {
+        icon.classList.remove("fa-angle-right");
+        icon.classList.add("fa-angle-left");
+      }
+    });
+  });
+</script>
