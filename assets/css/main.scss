@@ -7,3 +7,17 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// 사용자 정의 스타일
+body {
+  font-size: 16px; // 원하는 글씨 크기로 변경 (예: 14px, 16px 등)
+}
+
+// 특정 요소의 글씨 크기 조정 (예: 제목, 본문 등)
+h1 {
+  font-size: 2rem; // 제목 크기
+}
+
+p {
+  font-size: 1rem; // 본문 크기
+}
