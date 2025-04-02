@@ -1,8 +1,8 @@
 ---
 layout: single
 title: "Amazon DynamoDB Overview part2"
-categories: AWS
-tag: [blog, AWS]
+categories: Cloud(AWS,GCP)
+tag: [AWS,DB/Storage]
 search: true
 typora-root-url: ../
 
