@@ -5,7 +5,8 @@ categories: Cloud(AWS,GCP)
 tag: [AWS,DB/Storage]
 search: true
 typora-root-url: ../
-
+sidebar:
+  nav: "counts"
 
 
 
