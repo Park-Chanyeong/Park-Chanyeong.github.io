@@ -28,7 +28,7 @@ sidebar:
 
 ## 1. Terraform 개요
 
-![테라폼(Terraform)이란? | 44BITS](https://d2uleea4buiacg.cloudfront.net/files/8c7/8c7e6ba6534dedf5c5396faf3bc91989e71427d4d156783d54b4d7e4bce84c32.m.png)
+![Terraform이란?, 실습 (ec2, rds 생성해보기)](https://joojae.com/content/images/2023/11/terraform-logo-1.png)
 
 ### 1.1 IaC란?
 
