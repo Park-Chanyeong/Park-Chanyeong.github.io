@@ -28,6 +28,8 @@ sidebar:
 
 ## 1. Terraform 개요
 
+
+
 ![Terraform이란?, 실습 (ec2, rds 생성해보기)](https://joojae.com/content/images/2023/11/terraform-logo-1.png)
 
 ### 1.1 IaC란?
