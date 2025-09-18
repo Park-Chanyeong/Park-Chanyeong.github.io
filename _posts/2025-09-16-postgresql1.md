@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "PostgreSQL Logical Structure 논리적 구조"
+title: "PostgreSQL Logical Structure"
 categories: CS
 tag: [DB, PostgreSQL]
 search: true
@@ -27,7 +27,7 @@ sidebar:
 
 ## PostgreSQL 논리구조
 
-## 
+
 
 Postgresql 의 구조는 **논리 구조**와 **물리구조**로 나뉜다. 논리 구조는 오브젝트, 스키마, 데이터베이스, 롤, 테이블 스페이스가 해당된다.
 
@@ -37,7 +37,7 @@ Postgresql 의 구조는 **논리 구조**와 **물리구조**로 나뉜다. 논
 4. **데이터베이스** : 스키마의 집합
 5. **클러스터** : 데이터베이스와 Role 그리고 테이블 스페이스의 집합
 
-![DB 인사이드 | PostgreSQL Architecture - 3. Logical Structure](https://blog.kakaocdn.net/dna/DUR5h/btrAtKPSmnZ/AAAAAAAAAAAAAAAAAAAAAIoN1fpClek2BvKTcOs8UzGtKe0nJEkz8h74MCAXy1XM/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1759244399&allow_ip=&allow_referer=&signature=ERCVay86tlcYvKMPBNn20SDNLQU%3D)
+![img](/images/2025-09-16-postgresql1/img.jpg)
 
 ### 1. Cluster
 
