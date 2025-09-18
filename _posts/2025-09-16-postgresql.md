@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Postgrsql 프로세스 (postmaster, background, backend)"
+title: "Postgrsql 프로세스,메모리 (postmaster, background, backend, Shared memory, loacl memory)"
 categories: CS
 tag: [DB, PostgreSQL]
 search: true
@@ -20,9 +20,8 @@ sidebar:
 
 
 
-**[**PostgreSQL][Postgrsql 프로세스 (postmaster, background, backend) ](https://park-chanyeong.github.io){: .notice--primary}
-
-
+**[PostgreSQL][Postgrsql 프로세스,메모리 (postmaster, background, backend, Shared memory, loacl memory)](https://park-chanyeong.github.io)**
+{: .notice--primary}
 
 ![PostgresSQL 아키텍쳐](https://blog.kakaocdn.net/dna/md0i5/btsBbQVsUrJ/AAAAAAAAAAAAAAAAAAAAAKTctFmAmDoNHFpSXsEcYYKu6S2HQVAEqZ08P1D8WTko/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1759244399&allow_ip=&allow_referer=&signature=EKEJuFFO6xfhPDawqaFcXpFmsDo%3D)
 
@@ -161,14 +160,10 @@ RESET work_mem;
 
 로컬 메모리의 주요 파라미터는
 
-| 이름                                                         | 설명                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| maintenace_work_mem                                          | 다양한 작업에 사용되는 메모리 공간으로 default는 64MB, work_mem의 1.5배를 권장함. |
-| Vacuum 관련 작업, 인덱스 생성, 테이블 변경, 외래 키 추가 등 이와 같은 작업에 사용 |                                                              |
-| temp_buffers                                                 | Temp 테이블 사용을 위한 공간이며 세션단위로 할당됨 (default 8MB) |
-| work_mem                                                     | 쿼리의 정렬 작업이나 해시 연산 수행 시 사용되는 메모리 공간으로 default 4MB |
-| shared_buffers / max_connections 값으로 계산해서 적용할 것을 권장 |                                                              |
-| catalog_cache                                                | 시스템 카탈로그 메타 데이터를 사용할 때 필요한 공간.         |
-| 많은 세션들이 메타데이터를 조회하면 디스크 IO 땜시 성능 저하 가능성있음 |                                                              |
-| 각 세션마다 Catalog Cache를 사용하면 디스크  IO  성능을 줄일 수 있음 |                                                              |
-| Optimizer / Executor                                         | 수행한 쿼리들에 대한 최적의 실행 계획 수립 및 실행 시 사용되는 메모리 공간 |
+| 이름                 | 설명                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| maintenace_work_mem  | 다양한 작업에 사용되는 메모리 공간으로 default는 64MB, work_mem의 1.5배를 권장함.<br /> Vacuum 관련 작업, 인덱스 생성, 테이블 변경, 외래 키 추가 등 이와 같은 작업에 사용 |
+| temp_buffers         | Temp 테이블 사용을 위한 공간이며 세션단위로 할당됨 (default 8MB) |
+| work_mem             | 쿼리의 정렬 작업이나 해시 연산 수행 시 사용되는 메모리 공간으로 default 4MB <br /> shared_buffers / max_connections 값으로 계산해서 적용할 것을 권장 |
+| catalog_cache        | 시스템 카탈로그 메타 데이터를 사용할 때 필요한 공간. 많은 세션들이 메타데이터를 조회하면 디스크 IO 땜시 성능 저하 가능성있음. <br />각 세션마다 Catalog Cache를 사용하면 디스크  IO  성능을 줄일 수 있음 |
+| Optimizer / Executor | 수행한 쿼리들에 대한 최적의 실행 계획 수립 및 실행 시 사용되는 메모리 공간 |
