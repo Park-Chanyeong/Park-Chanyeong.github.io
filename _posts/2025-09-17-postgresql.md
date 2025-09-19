@@ -130,7 +130,7 @@ Shared Buffer는 모든 프로세스가 공용으로 사용하는 리소스이�
       3. `VM_FORKNUM **`:** 가시성 맵 포크로 숫자 2로 표현
    3. **BlockNumber (blockNum)** : 테이블이나 인덱스에서 특정 데이터 블록을 식별할 수 있는 데이터 블록 번호
 
-![The Amazing Buffer Tag in PostgreSQL | David's Blog](https://idrawone.github.io/images/img/buffer-tag-mapping.png)
+![buffer-tag-mapping](/images/2025-09-17-postgresql/buffer-tag-mapping.png)
 
 > 예를들어 이미지 상 [(1663, 12709, 16387), 0, 0] 이면 1663은 테이블스페이즈 OID, 12709는 DB OID, 16387은 테이블 OID, 그 다음의 포크의 유형으로 0이니 메인 포크, 마지막 영역의 0은 데이터 파일에서 페이지 위치를 나타냄. 이 태그가 키값이 되어 해시 함수에 입력값으로 들어가고 보면 1536704684(버킷)으로 계산된 걸 알 수 있음. 그리고 이 값에 해당하는 해시 버킷의 위치를 찾음. → 그 버킷의 연결된 해시 엘리먼트의 Buffer_id는 0이므로, 이는 데이터가 저장된 Buffer pool의 위치가 0번째 배열이라는 뜻!!!
 
